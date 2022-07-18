@@ -1,0 +1,43 @@
+.app {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 25px;
+}
+
+.dropdownSection {
+  margin: 0px 0px 15px 0px;
+  width: 100%;
+}
+.dropdownSection .dropdownWrapper {
+  background-color: #777777;
+  padding: 10px;
+}
+.dropdownSection .dropdownWrapper .cityDropdown {
+  font-size: 16px;
+  padding: 8px 20px 8px 8px;
+  border-radius: 5px;
+}
+
+.daysListWrapper {
+  margin: 0px 0px 15px 0px;
+  width: 100%;
+}
+
+.daysList{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0px;
+}
+
+.daysList li {
+  padding: 10px;
+}
+
+.activeDay {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
