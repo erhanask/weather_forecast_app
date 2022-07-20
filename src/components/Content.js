@@ -4,10 +4,11 @@ import {ContentContext} from "../context/ContentContext";
 
 function Content() {
     const data = useContext(ThemeContext);
-    const content = useContext(ContentContext);
+    const {weeklyValue,setCurrentCordinate} = useContext(ContentContext);
 
     return (
         <div className={`daysListWrapper`}>
+            {JSON.stringify(weeklyValue)}
             <ul className={`daysList`}>
                 <li className={`activeDay`}>
                     <div>Monday</div>
