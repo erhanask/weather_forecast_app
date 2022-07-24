@@ -1,59 +1,28 @@
 import {useContext} from "react";
-import {ThemeContext} from "../context/ThemeContext";
 import {ContentContext} from "../context/ContentContext";
 
 function Content() {
-    const data = useContext(ThemeContext);
-    const {weeklyValue,setCurrentCordinate} = useContext(ContentContext);
+    const {weeklyValue} = useContext(ContentContext);
 
     return (
         <div className={`daysListWrapper`}>
-            {JSON.stringify(weeklyValue)}
             <ul className={`daysList`}>
-                <li className={`activeDay`}>
-                    <div>Monday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Tuesday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Sunday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Wed</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Thursday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Friday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
-                <li>
-                    <div>Saturday</div>
-                    <div>image</div>
-                    <div>20C</div>
-                </li>
+                {
+                    weeklyValue.map((item, i) => {
+                        return (<li key={i} className={i == 0 ?`activeDay`:''}>
+                            <div>{
+                                new Date(item.dt * 1000).toLocaleDateString('en', { weekday: 'long', })
+                            }</div>
+                            <div>
+                                <img alt={"icon"} width={"100%"} src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} />
+                            </div>
+                            <div>{Math.ceil(item.temp.day)}&#176;</div>
+                        </li>)
+                    })
+                }
             </ul>
         </div>
-        // <div>
-        //     Header Active Theme: {data.theme}
-        //     <br />
-        //     <button onClick={() => {data.setTheme(data.theme === "light" ? "dark" : "light")}}>
-        //         Change Theme
-        //     </button>
-        // </div>
+
     );
 }
 
